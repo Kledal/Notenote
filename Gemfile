@@ -13,6 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "haml-rails", "~> 0.9"
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'devise'
+gem 'simple_form'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'byebug'
