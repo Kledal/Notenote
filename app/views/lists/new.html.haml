@@ -1,0 +1,7 @@
+.container-fluid
+  .row
+    .col-md-12
+      = link_to lists_path, class: "btn btn-default" do |f|
+        = fa_icon "chevron-left", text: "Back to your lists"
+
+  = render 'form'

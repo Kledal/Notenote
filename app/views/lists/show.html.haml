@@ -1,0 +1,29 @@
+.container-fluid
+  .row{ data: {turbolinks:{permanent: true} }}
+    .col-md-12
+
+      .panel.panel-default
+        .panel-body
+          .pull-left
+            = link_to lists_path, class: "btn btn-default" do |f|
+              = fa_icon "chevron-left", text: "Back to your lists"
+
+          .pull-right
+            = link_to new_list_todo_item_path(@list), class: "btn btn-primary" do |f|
+              = fa_icon "plus", text: "Add todo item"
+            - if @list.is_owner?(current_user)
+              = link_to edit_list_path(@list), class: "btn btn-warning" do |f|
+                = fa_icon "pencil", text: "Edit list"
+              = link_to list_path(@list), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } do |f|
+                = fa_icon "times", text: "Delete list"
+
+  .row
+    .col-md-12
+      %h2= @list.name
+
+      .list-group#todo-items
+      - @list.todo_items.each do |item|
+
+        = render partial: item, locals: { todo_item: item }
+
+-# onclick: "Turbolinks.visit('#{check_todo_item_path(item)}', { change: 'todo-items:#{item.id}' })"

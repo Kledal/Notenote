@@ -14,9 +14,10 @@
         %li.active
           = link_to root_path do |f|
             = fa_icon "home", text: "Frontpage"
-        -# - if user_signed_in?
-        -#   = link_to  do |f|
-        -#     = fa_icon "bars", text: "My lists"
+        - if user_signed_in?
+          %li
+            = link_to new_list_path do |f|
+              = fa_icon "plus", text: "Create todo list"
 
       %ul.nav.navbar-nav.navbar-right
         - if !user_signed_in?

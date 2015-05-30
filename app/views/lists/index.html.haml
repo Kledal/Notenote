@@ -1,0 +1,20 @@
+.container-fluid
+  .row
+    .col-md-12
+      .btn-group{ role: "group" }
+        = link_to new_list_path, class: "btn btn-success" do |f|
+          = fa_icon "plus", text: "New todo list"
+  .row
+    .col-md-12
+      %h2 Your todo lists
+  .row
+    - @lists.each do |list|
+      .col-md-3
+        .panel.panel-default
+          .panel-body
+            %p
+              %strong
+                = link_to list.name, list
+              %br
+              Not shared
+            %p= list.description

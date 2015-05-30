@@ -1,0 +1,4 @@
+= link_to check_todo_item_path(todo_item), remote: true, id: "todo-items:#{todo_item.id}", class: "list-group-item" do
+  - if todo_item.done
+    = fa_icon "check"
+  = todo_item.name
