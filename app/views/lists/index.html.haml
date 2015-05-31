@@ -11,10 +11,13 @@
     - @lists.each do |list|
       .col-md-3
         .panel.panel-default
+          .panel-heading
+            %strong
+              = link_to list.name, list
           .panel-body
+            .progress
+              .progress-bar.progress-bar-success{ role: "progressbar", aria: { valuenow: list.percent_done, valuemin: 0, valuemax: 100 }, style: "width: #{list.percent_done}%" }
+                = "#{list.percent_done}% Complete"
             %p
-              %strong
-                = link_to list.name, list
-              %br
               Not shared
             %p= list.description

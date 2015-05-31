@@ -16,6 +16,9 @@
             = fa_icon "home", text: "Frontpage"
         - if user_signed_in?
           %li
+            = link_to lists_path do |f|
+              = fa_icon "list", text: "My lists"
+          %li
             = link_to new_list_path do |f|
               = fa_icon "plus", text: "Create todo list"
 
