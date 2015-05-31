@@ -19,5 +19,8 @@
               .progress-bar.progress-bar-success{ role: "progressbar", aria: { valuenow: list.percent_done, valuemin: 0, valuemax: 100 }, style: "width: #{list.percent_done}%" }
                 = "#{list.percent_done}% Complete"
             %p
-              Not shared
+              - if list.shared?
+                List is shared.
+              - else
+                This list is only visible to you.
             %p= list.description

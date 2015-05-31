@@ -10,6 +10,11 @@ class List < ActiveRecord::Base
     return user_lists.where(user_id: user.id).first.owner
   end
 
+  def shared?
+    return false if user_lists.size == 1
+    return true
+  end
+
   def percent_done
     return 0 if !todo_items.present?
     percent = (todo_items.where(done: true).size / todo_items.size.to_f)*100
