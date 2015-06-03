@@ -1,0 +1,6 @@
+.row#todo-items
+  .col-md-12
+    %h2= @list.name
+    .list-group
+      = render partial: 'progress_bar', locals: { list: list}
+      = render partial: 'todo_items/todo_item', collection: @list.todo_items.sorted, as: :todo_item

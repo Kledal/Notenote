@@ -1,0 +1,15 @@
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-body
+        = link_to lists_path, class: "btn btn-default" do |f|
+          = fa_icon "chevron-left", text: "Back to your lists"
+        - if list.is_owner?(current_user)
+          = link_to edit_list_path(list), class: "btn btn-warning" do |f|
+            = fa_icon "pencil", text: "Edit list"
+          = link_to list_path(list), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } do |f|
+            = fa_icon "times", text: "Delete list"
+    .panel.panel-default
+      .panel-body
+        = link_to new_list_todo_item_path(list), class: "btn btn-success" do |f|
+          = fa_icon "plus", text: "Add todo item"
