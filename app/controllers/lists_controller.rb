@@ -12,6 +12,11 @@ class ListsController < ApplicationController
   # GET /lists/1.json
   def show
     @list = current_user.lists.find(params[:id])
+    if request.xhr?
+      render "show.xhr.haml", layout: false, change: "todo-items"
+    else
+      render :show
+    end
   end
 
   # GET /lists/new

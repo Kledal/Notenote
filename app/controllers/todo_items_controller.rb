@@ -45,7 +45,9 @@ class TodoItemsController < ApplicationController
     @todo_item.done = !@todo_item.done
     @todo_item.save
 
-    render @todo_item, layout: false, locals: { todo_item: @todo_item }, change: "todo-items:#{@todo_item.id}"
+    redirect_to list_path(@todo_item.list), change: 'todo-items'
+
+    # render @todo_item, layout: false, locals: { todo_item: @todo_item }, change: "todo-items:#{@todo_item.id}"
   end
 
   # PATCH/PUT /todo_items/1
