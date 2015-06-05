@@ -20,4 +20,13 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'database_cleaner', '~> 1.4.1'
+end
+
+group :development do
+  gem 'guard-rspec', require: false
 end

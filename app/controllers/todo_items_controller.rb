@@ -42,12 +42,10 @@ class TodoItemsController < ApplicationController
   def check
     @todo_item = TodoItem.find(params[:id])
 
-    @todo_item.done = !@todo_item.done
+    @todo_item.toggle
     @todo_item.save
 
     redirect_to list_path(@todo_item.list), change: 'todo-items'
-
-    # render @todo_item, layout: false, locals: { todo_item: @todo_item }, change: "todo-items:#{@todo_item.id}"
   end
 
   # PATCH/PUT /todo_items/1

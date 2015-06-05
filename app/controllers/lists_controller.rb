@@ -28,6 +28,9 @@ class ListsController < ApplicationController
   def edit
   end
 
+  def share
+  end
+
   # POST /lists
   # POST /lists.json
   def create

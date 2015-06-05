@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :lists, shallow: true do
+    get 'share', on: :member
     resources :todo_items do
       get 'check', on: :member
     end
