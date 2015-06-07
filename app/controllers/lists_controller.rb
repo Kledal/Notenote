@@ -13,7 +13,7 @@ class ListsController < ApplicationController
   def show
     @list = current_user.lists.find(params[:id])
     if request.xhr?
-      render "show.xhr.haml", layout: false, change: "todo-items"
+      render 'show.xhr.haml', layout: false, change: 'todo-items'
     else
       render :show
     end
@@ -34,13 +34,12 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
-    @list = current_user.lists.create(list_params)
-    user_list = @list.user_lists.first
-    user_list.owner = true
+    @list = List.new(list_params)
 
     respond_to do |format|
       if @list.save
-        user_list.save
+        @list.add_user(current_user, true)
+
         format.html { redirect_to @list, notice: 'List was successfully created.' }
         format.json { render :show, status: :created, location: @list }
       else
@@ -75,13 +74,14 @@ class ListsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_list
-      @list = List.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def list_params
-      params.require(:list).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_list
+    @list = List.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def list_params
+    params.require(:list).permit(:name, :description)
+  end
 end

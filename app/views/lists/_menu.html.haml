@@ -4,7 +4,7 @@
       .panel-body
         = link_to lists_path, class: "btn btn-default" do |f|
           = fa_icon "chevron-left", text: "Back to your lists"
-        - if list.is_owner?(current_user)
+        - if list.owner?(current_user)
           = link_to share_list_path(list), class: "btn btn-success" do |f|
             = fa_icon "user-plus", text: "Share list"
           = link_to edit_list_path(list), class: "btn btn-warning" do |f|
